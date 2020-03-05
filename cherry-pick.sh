@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # search for the PR labels applicable to the specified commit
-labels=$(curl "https://api.github.com/search/issues?q=repo:$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME+sha:$CIRCLE_SHA1" | --raw-output '.items[].labels[] | .name')
+labels=$(curl "https://api.github.com/search/issues?q=repo:$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME+sha:$CIRCLE_SHA1" | jq --raw-output '.items[].labels[] | .name')
 
 for label in $labels; do
     echo "checking label: $label"
