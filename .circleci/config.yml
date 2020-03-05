@@ -5,6 +5,9 @@ jobs:
       - image: circleci/golang:latest
     steps:
       - checkout
+      - add_ssh_key:
+          fingerprints:
+            - "52:05:24:c6:57:69:be:c9:39:12:28:2f:e3:a9:bd:e3"
       - run: ./cherry-pick.sh
 workflows:
   version: 2
