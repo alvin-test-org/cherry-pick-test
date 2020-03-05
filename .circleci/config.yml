@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  cherry-pick:
+    docker:
+      - image: circleci/golang:latest
+    steps:
+      - checkout
+      - run: ./cherry-pick.sh
+workflows:
+  version: 2
+  test:
+    jobs:
+      - cherry-pick:
+          filters:
+            branches:
+              only: master
