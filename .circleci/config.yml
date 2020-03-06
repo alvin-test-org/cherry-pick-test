@@ -3,6 +3,7 @@ jobs:
   cherry-pick:
     docker:
       - image: circleci/golang:latest
+    context: test-ssh
     steps:
       - checkout
       - add_ssh_keys:
