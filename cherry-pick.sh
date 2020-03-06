@@ -12,6 +12,8 @@ fi
 labels=$(echo "$resp" | jq --raw-output '.items[].labels[] | .name')
 
 for label in $labels; do
+    git config --local user.email "hashicorp-ci@users.noreply.github.com"
+    git config --local user.name "hashicorp-ci"
     echo "checking label: $label"
     if [[ $label =~ docs* ]]; then
         echo "docs"
